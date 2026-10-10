@@ -18,6 +18,8 @@ namespace tjvm {
 * while an Integer constant has a tag of 3 and is followed by a 4-byte integer value.
 * these tags are predefined in the JVM specification
  */
+
+ // me 3 days later -> thanks for the comments cz i forgot what the hell these tags are for
 enum class ConstantTag : std::uint8_t {
     Utf8 = 1,
     Integer = 3,
