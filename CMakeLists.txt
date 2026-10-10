@@ -12,6 +12,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(tjvm
     src/main.cpp
     src/class_file_reader.cpp
+    src/class_file_parser.cpp
+    src/constant_pool.cpp
 )
 
 target_include_directories(tjvm

@@ -1,6 +1,8 @@
 #pragma once
 
+#include <constant_pool.hpp>
 #include <cstdint>
+
 
 namespace tjvm {
 
@@ -18,6 +20,11 @@ struct ClassFileHeader {
     std::uint16_t minor_version;
     std::uint16_t major_version;
     std::uint16_t constant_pool_count;
+};
+
+struct ClassFile {
+    ClassFileHeader header;
+    ConstantPool constant_pool;
 };
 
 } // namespace tjvm

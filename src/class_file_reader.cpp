@@ -78,6 +78,28 @@ std::uint32_t ClassFileReader::read_u4() {
            static_cast<std::uint32_t>(b4);
 }
 
+std::uint64_t ClassFileReader::read_u8() {
+    /*
+     * The class-file format is big-endian, so we read the
+     * high and low 32-bit halves separately.
+     */
+    const auto high = read_u4();
+    const auto low = read_u4();
+
+    return (static_cast<std::uint64_t>(high) << 32) | low;
+}
+
+// function to read a sequence of bytes from the class file
+std::vector<std::uint8_t> ClassFileReader::read_bytes(std::size_t length) {
+    std::vector<std::uint8_t> bytes(length);
+
+    for (auto& byte : bytes) {
+        byte = read_u1();
+    }
+
+    return bytes;
+}
+
 ClassFileHeader ClassFileReader::read_header() {
     ClassFileHeader header{};
 
